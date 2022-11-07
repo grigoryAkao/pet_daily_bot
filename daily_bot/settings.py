@@ -33,7 +33,7 @@ TELEGRAM_ADMIN_ID = os.environ.get('TELEGRAM_ADMIN_ID')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'core',
     'tg',
+    'weather',
 ]
 
 MIDDLEWARE = [
