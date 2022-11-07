@@ -1,0 +1,11 @@
+# Common
+python-dotenv==0.21.0
+
+# Django Libs
+django==3.2
+
+# Celery
+celery==5.2.7
+
+# Telegram
+python-telegram-bot==13.14
