@@ -27,9 +27,11 @@ if Path(DOTENV_PATH).exists():
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+# TELEGRAM APP
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 TELEGRAM_ADMIN_ID = os.environ.get('TELEGRAM_ADMIN_ID')
-
+# WEATHER APP
+YANDEX_WEATHER_TOKEN = os.environ.get('YANDEX_WEATHER_TOKEN')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

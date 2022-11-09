@@ -15,15 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from telegram import Bot
 
-from .settings import TELEGRAM_TOKEN, TELEGRAM_ADMIN_ID
-from .celery import debug_task
+from tg.bot import updater
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-
-bot = Bot(TELEGRAM_TOKEN)
-bot.send_message(TELEGRAM_ADMIN_ID, 'Сервер запущен')
+updater.start_polling()
+# updater.idle()
