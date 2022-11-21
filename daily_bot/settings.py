@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_results',
 
     'core',
     'tg',
@@ -84,7 +85,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'daily_bot.wsgi.application'
 
 
-# Database
+# Database & Cache
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
@@ -93,6 +94,24 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'caches'),
+    }
+}
+
+# Celery
+
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout':3600}
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 
 # Password validation

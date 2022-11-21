@@ -16,11 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from tg.bot import updater
-
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-updater.start_polling()
-# updater.idle()

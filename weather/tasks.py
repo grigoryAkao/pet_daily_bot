@@ -11,7 +11,7 @@ headers = {
 URL = 'https://api.weather.yandex.ru/v2/forecast?lat=55.75396&lon=37.620393&extra=false'
 
 @app.task
-def simple_request():
+def weather_request():
     resp = requests.get(url=URL, headers=headers)
     if resp.status_code == 200:
         print(resp.json())
