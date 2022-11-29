@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Weather(models.Model):
+    now_dt = models.DateTimeField()
+    temp = models.SmallIntegerField()
+    feels_like = models.SmallIntegerField()
+
