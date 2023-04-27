@@ -1,5 +1,5 @@
 import os
-from datetime import date
+from datetime import date, datetime
 from http import HTTPStatus
 
 import requests
@@ -17,7 +17,7 @@ params = {
     'from':'s9600741',
     'to':'s9600901',
     'date': date.today(),
-    'limit':5
+    'result_timezone':'Europe/Moscow',
 }
 
 def get_trains_info():
@@ -35,7 +35,7 @@ def get_trains_info():
                 arrival=result['arrival']
             )
             trains.append(train)
-        return trains
+        return [train for train in trains if train.departure.timestamp() > datetime.now().timestamp()]
 
 
 
